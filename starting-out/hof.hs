@@ -35,3 +35,10 @@ quicksort (x : xs) =
     let smallerSorted = quicksort (filter (<= x) xs)
         biggerSorted = quicksort (filter (> x) xs)
     in smallerSorted ++ [x] ++ biggerSorted
+
+largestDivisible :: (Integral a) => a
+largestDivisible = head (filter p [100000, 99999..])
+    where p x = x `mod` 3829 == 0
+
+sumOfOddSquares :: (Integral a) => a
+sumOfOddSquares = sum (takeWhile (< 10000) (filter odd (map (^2) [1..])))
