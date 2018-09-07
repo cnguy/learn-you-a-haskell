@@ -57,3 +57,12 @@ chainLengthBiggerThan15 = length (filter longerThan15 (map chain [1..100]))
 -- Pretty cool!
 multipliers :: Int -> [Int]
 multipliers number = map (\f -> f number) (map (*) [0..100])
+
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+sum'' :: (Num a) => [a] -> a
+sum'' = foldl (+) 0
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' target = foldl (\acc x -> if (x == target) then True else acc) False
