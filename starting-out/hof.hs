@@ -52,3 +52,8 @@ chain n
 chainLengthBiggerThan15 :: Int
 chainLengthBiggerThan15 = length (filter longerThan15 (map chain [1..100]))
     where longerThan15 xs = length xs > 15
+
+-- Partially applying a parameter to a bunch of functions created from `map`.
+-- Pretty cool!
+multipliers :: Int -> [Int]
+multipliers number = map (\f -> f number) (map (*) [0..100])
