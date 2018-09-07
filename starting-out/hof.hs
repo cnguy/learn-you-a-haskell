@@ -42,3 +42,13 @@ largestDivisible = head (filter p [100000, 99999..])
 
 sumOfOddSquares :: (Integral a) => a
 sumOfOddSquares = sum (takeWhile (< 10000) (filter odd (map (^2) [1..])))
+
+chain :: (Integral a) => a -> [a]
+chain 1 = [1]
+chain n
+    | even n = n : (chain (n `div` 2))
+    | odd n = n : (chain (n*3 + 1))
+
+chainLengthBiggerThan15 :: Int
+chainLengthBiggerThan15 = length (filter longerThan15 (map chain [1..100]))
+    where longerThan15 xs = length xs > 15
