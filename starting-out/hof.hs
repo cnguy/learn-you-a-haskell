@@ -70,3 +70,22 @@ elem' target = foldl (\acc x -> if (x == target) then True else acc) False
 -- Less expensive than foldLeft (++) combo.
 map'' :: (a -> b) -> [a] -> [b]
 map'' f = foldr (\x acc -> (f x) : acc) []
+
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldl1 (\acc x -> if x > acc then x else acc)
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+
+product' :: (Num a) => [a] -> a
+product' = foldl1 (*)
+
+-- Kinda understanding the trick to foldl/foldr and optimization now! Avoid (++) with a little thinking.
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\el acc -> if p el then el : acc else acc) []
+
+--reverse'
+--product'
+--filter'
+--head'
+--last'
