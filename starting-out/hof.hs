@@ -66,3 +66,7 @@ sum'' = foldl (+) 0
 
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' target = foldl (\acc x -> if (x == target) then True else acc) False
+
+-- Less expensive than foldLeft (++) combo.
+map'' :: (a -> b) -> [a] -> [b]
+map'' f = foldr (\x acc -> (f x) : acc) []
