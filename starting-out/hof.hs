@@ -89,5 +89,15 @@ head' = foldl1 (\el _ -> el)
 
 last' :: [a] -> a
 last' = foldl1 (\_ acc -> acc)
---head'
---last'
+
+sqrtSums :: Int
+sqrtSums = length (takeWhile (< 1000) (scanl1 (+) (map sqrt [1..]))) + 1
+
+plusFiveAndSquare :: (Num a) => [a] -> [a]
+plusFiveAndSquare =  map ((^2) . (+5))
+
+oddSquareSum :: Integer
+oddSquareSum =
+    let oddSquares = filter odd $ map (^2) [1..]
+        belowLimit = takeWhile (< 10000) oddSquares
+    in sum belowLimit
