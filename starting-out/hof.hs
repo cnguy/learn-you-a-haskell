@@ -84,8 +84,10 @@ product' = foldl1 (*)
 filter'' :: (a -> Bool) -> [a] -> [a]
 filter'' p = foldr (\el acc -> if p el then el : acc else acc) []
 
---reverse'
---product'
---filter'
+head' :: [a] -> a
+head' = foldl1 (\el _ -> el)
+
+last' :: [a] -> a
+last' = foldl1 (\_ acc -> acc)
 --head'
 --last'
